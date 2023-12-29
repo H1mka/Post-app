@@ -1,0 +1,26 @@
+:root {
+  --light-purple: #764abc;
+  --dark-purple: #481499;
+  --dark-text: #191f25;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  color: var(--dark-text);
+}
+
+main {
+  max-width: 1040px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  padding: 0;
+  margin: 0;
+}

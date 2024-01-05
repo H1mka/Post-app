@@ -2,20 +2,23 @@ import { IPost } from '../types/postInterface';
 
 export const postMocks: IPost[] = [
   {
+    id: 1,
     title: 'Title1',
-    content: 'bbbbbbbbbbbbb bbbbbbbbbbb b b b b ',
+    content: 'Learning vue.js vuex',
     author: 'Dima',
   },
 
   {
+    id: 2,
     title: 'Title2',
-    content: 'aa aa a a a aaa a a a',
-    author: 'Vkvas',
+    content: 'React redux, store manager',
+    author: 'Dan Abramov',
   },
 
   {
+    id: 3,
     title: 'Title3',
-    content: 'cc  c cc c c  cc c  cc c ',
-    author: 'Vlas',
+    content: 'Node js is the best.',
+    author: 'Ryan Dal',
   },
 ];

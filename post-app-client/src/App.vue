@@ -1,8 +1,10 @@
 <template>
-  <Header />
-  <main>
-    <router-view></router-view>
-  </main>
+  <div id="app">
+    <Header />
+    <main>
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <script lang="ts">

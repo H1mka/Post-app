@@ -25,8 +25,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { CustomInput } from './UI';
-import { IPost } from '@/types/postInterface';
+import { IPost } from '../types/postInterface';
 
 export default defineComponent({
   data() {
@@ -38,18 +37,17 @@ export default defineComponent({
       } as IPost,
     };
   },
-  components: {
-    CustomInput,
-  },
 });
 </script>
 
 <style lang="scss" scoped>
 .form {
   margin-top: 50px;
-  display: flex;
 
-  &.form__content {
+  .form__block {
+    input {
+      width: 40%;
+    }
   }
 }
 </style>

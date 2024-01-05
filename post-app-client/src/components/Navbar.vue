@@ -6,15 +6,15 @@
       </b-nav-item>
     </b-navbar-nav>
 
-    <b-navbar-nav class="ml-auto left-navbar">
+    <!-- <b-navbar-nav class="ml-auto left-navbar">
       <b-nav-item>
-        <router-link to="/tesdsaast">Log in</router-link>
+        <router-link to="/">Log in</router-link>
       </b-nav-item>
 
       <b-nav-item>
-        <router-link to="/test">Sign in</router-link>
+        <router-link to="/">Sign in</router-link>
       </b-nav-item>
-    </b-navbar-nav>
+    </b-navbar-nav> -->
   </b-navbar>
 </template>
 
@@ -33,20 +33,19 @@ export default defineComponent({
 }
 
 .nav-item {
-  padding: 0px 16px;
-  border-radius: 8px;
-  background-color: var(--dark-purple);
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba($color: #481499, $alpha: 0.4);
-    text-decoration: underline;
-    color: white;
-  }
-
   .nav-link a {
     color: white;
     text-decoration: none;
+    background-color: var(--dark-purple);
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($color: #481499, $alpha: 0.4);
+      text-decoration: underline;
+      color: white;
+    }
   }
 }
 </style>

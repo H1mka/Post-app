@@ -1,3 +1,4 @@
 import CustomInput from './CustomInput.vue';
+import CustomButton from './CustomButton.vue';
 
-export { CustomInput };
+export default [CustomButton, CustomInput];

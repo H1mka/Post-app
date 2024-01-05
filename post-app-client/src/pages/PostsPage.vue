@@ -8,7 +8,6 @@
 <script lang="ts">
 import { defineComponent, PropType, computed, ComputedRef } from 'vue';
 import { IPost } from '../types/postInterface';
-import { postMocks } from '../mocks/postMocks';
 import PostForm from '../components/PostForm.vue';
 import PostList from '../components/PostList.vue';
 import store from '../store/store';
@@ -20,7 +19,6 @@ export default defineComponent({
     PostList,
   },
   mounted() {
-    store.commit('setPosts', postMocks);
     console.log('mounted');
   },
   setup() {

@@ -1,9 +1,12 @@
 <template>
-  <section class="post-list">
+  <div class="post-list" v-if="posts.length > 0">
     <h2>Posts:</h2>
 
     <PostListItem v-for="post in posts" :key="post.id" :post="post" />
-  </section>
+  </div>
+  <div v-else class="post-empty">
+    <h2>Posts list are empty</h2>
+  </div>
 </template>
 
 <script lang="ts">

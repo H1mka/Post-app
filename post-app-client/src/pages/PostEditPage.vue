@@ -18,9 +18,9 @@
     </div>
 
     <div class="post-edit__btns">
-      <CustomButton text="Save" />
-      <CustomButton text="Cancel" />
-      <CustomButton text="Delete" class="last-btn" />
+      <CustomButton text="Save" @click="savePost" />
+      <CustomButton text="Cancel" @click="cancelChanges" />
+      <CustomButton text="Delete" class="last-btn" @click="removePost" />
     </div>
   </div>
 </template>
@@ -29,6 +29,7 @@
 import { defineComponent } from 'vue';
 import { IPost } from '../types/postInterface';
 import { postMocks } from '../mocks/postMocks';
+import store from '../store/store';
 
 export default defineComponent({
   data() {
@@ -41,7 +42,20 @@ export default defineComponent({
     const postCheck = postMocks.find((post) => post.id === postId);
     if (!postCheck) return;
 
-    this.post = postCheck;
+    this.post = { ...postCheck };
+  },
+  methods: {
+    removePost() {
+      store.commit('removePost', this.post.id);
+      this.$router.push('/');
+    },
+    savePost() {
+      store.commit('updatePost', this.post);
+      this.$router.push('/');
+    },
+    cancelChanges() {
+      this.$router.push('/');
+    },
   },
 });
 </script>

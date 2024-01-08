@@ -3,9 +3,20 @@ const pool = require('../db');
 class PostController {
   async getPosts(req, res) {
     try {
-      const posts = await pool.query('SELECT * FROM posts');
+      const posts = await pool.query('SELECT * FROM posts ORDER BY id');
 
       res.status(200).json(posts.rows);
+    } catch (error) {
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  }
+
+  async getPostById(req, res) {
+    try {
+      const { id } = req.params;
+      const post = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
+
+      res.status(200).json(post.rows[0]);
     } catch (error) {
       res.status(500).json({ message: 'Internal server error' });
     }

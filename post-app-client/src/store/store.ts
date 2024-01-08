@@ -27,6 +27,7 @@ export default createStore({
   },
   getters: {
     getPostById: (state) => (postId: number) => {
+      console.log('hi');
       return state.posts.find((post) => post.id === postId);
     },
   },

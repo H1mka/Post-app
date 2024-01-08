@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/post/:id',
     component: PostEditPage,
-  }
+  },
 ];
 
 const router = createRouter({

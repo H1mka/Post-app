@@ -9,12 +9,11 @@ export default defineComponent({
   name: 'CustomInput',
   props: {
     modelValue: {
-      type: [String],
+      type: String,
       required: true,
+      default: '',
     },
   },
-  emits: {},
-
   methods: {
     handleChange(event: Event): void {
       if (event.target instanceof HTMLInputElement) {

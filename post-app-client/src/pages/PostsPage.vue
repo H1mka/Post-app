@@ -1,16 +1,17 @@
 <template>
   <div>
     <PostForm />
-    <PostList :posts="posts" />
+    <PostList :posts="posts" v-if="!isLoading" />
+    <h3 v-else>loading...</h3>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, computed, ComputedRef } from 'vue';
+import { defineComponent } from 'vue';
 import { IPost } from '../types/postInterface';
 import PostForm from '../components/PostForm.vue';
 import PostList from '../components/PostList.vue';
-import store from '../store/store';
+import usePosts from '../hooks/usePosts';
 
 export default defineComponent({
   name: 'PostsPage',
@@ -19,18 +20,17 @@ export default defineComponent({
     PostList,
   },
   mounted() {
-    console.log('mounted');
+    this.getPosts();
   },
   setup() {
-    const posts: ComputedRef<IPost[]> = computed(() => store.state.posts);
+    const { posts, isLoading, getPosts } = usePosts();
 
     return {
       posts,
+      isLoading,
+      getPosts,
     };
   },
-  // computed: {
-  //   posts
-  // }
 });
 </script>
 

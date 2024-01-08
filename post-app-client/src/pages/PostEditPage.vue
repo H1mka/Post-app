@@ -1,7 +1,5 @@
 <template>
   <div id="post-edit">
-    <h2>{{ $route.params }}</h2>
-
     <div class="post-edit__block">
       <p>Title:</p>
       <CustomInput v-model="post.title" />
@@ -27,41 +25,50 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IPost } from '../types/postInterface';
-import { postMocks } from '../mocks/postMocks';
-import store from '../store/store';
+import { useRoute, useRouter } from 'vue-router';
+import useGetPostById from '../hooks/useGetPostById';
+import usePosts from '../hooks/usePosts';
 
 export default defineComponent({
-  data() {
-    return {
-      post: {} as IPost, // переедет в setup, будет возвращаться из хука
-    };
-  },
-  mounted() {
-    const postId: number = Number(this.$route.params.id);
-    const postCheck = postMocks.find((post) => post.id === postId);
-    if (!postCheck) return;
-
-    this.post = { ...postCheck };
-  },
+  mounted() {},
   methods: {
-    removePost() {
-      store.commit('removePost', this.post.id);
-      this.$router.push('/');
-    },
-    savePost() {
-      store.commit('updatePost', this.post);
-      this.$router.push('/');
-    },
     cancelChanges() {
       this.$router.push('/');
     },
+  },
+  setup(props, context) {
+    const route = useRoute();
+    const router = useRouter();
+    const postId: number = Number(route.params.id);
+
+    const { post, isLoading } = useGetPostById(postId);
+    const { deletePost, updatePost } = usePosts();
+
+    const removePost = () => {
+      deletePost(post.value.id);
+      router.push('/');
+    };
+
+    const savePost = () => {
+      updatePost(post.value);
+      router.push('/');
+    };
+
+    return {
+      post,
+      isLoading,
+      deletePost,
+      updatePost,
+      savePost,
+      removePost,
+    };
   },
 });
 </script>
 
 <style lang="scss" scoped>
 #post-edit {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 15px;

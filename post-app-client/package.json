@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "axios": "^1.6.3",
     "bootstrap": "^5.3.2",
     "bootstrap-vue-3": "^0.5.1",

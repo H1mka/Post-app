@@ -37,7 +37,7 @@
     </div>
 
     <div class="form__btns">
-      <CustomButton text="Add Post" style="width: 40%" />
+      <CustomButton text="Add Post" style="width: 100%" />
     </div>
   </form>
 </template>
@@ -58,6 +58,12 @@ export default defineComponent({
         content: '',
       } as IPost,
     };
+  },
+  props: {
+    closeModal: {
+      type: Function,
+      required: false,
+    },
   },
   setup() {
     const { createPost } = usePosts();
@@ -82,6 +88,8 @@ export default defineComponent({
       this.post.title = '';
       this.post.author = '';
       this.post.content = '';
+
+      this.closeModal && this.closeModal();
     },
   },
 });
@@ -89,8 +97,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .form {
-  margin-top: 50px;
-
   .form__content {
     .form__block {
       margin-bottom: 20px;
@@ -101,10 +107,6 @@ export default defineComponent({
 
       .error-msg {
         color: var(--red);
-      }
-
-      input {
-        width: 40%;
       }
     }
   }

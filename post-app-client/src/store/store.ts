@@ -14,6 +14,7 @@ export default createStore({
 
     addPost(state, payload: IPost) {
       state.posts.push(payload);
+      state.posts.sort((a, b) => b.date.localeCompare(a.date));
     },
 
     removePost(state, postId: number) {

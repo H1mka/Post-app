@@ -21,7 +21,7 @@ button {
   padding: 6px 12px;
   font-size: 16px;
   border-radius: 6px;
-  width: 100px;
+  min-width: 100px;
   border: 2px solid var(--dark-purple);
   color: #fff;
 

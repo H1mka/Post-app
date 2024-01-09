@@ -32,4 +32,8 @@ input {
   border: 2px solid var(--light-purple);
   box-sizing: border-box;
 }
+
+.input-error {
+  border: 2px solid var(--red);
+}
 </style>

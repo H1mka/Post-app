@@ -43,11 +43,22 @@ export default function () {
     }
   };
 
+  const createPost = async (post: IPost) => {
+    try {
+      const response: AxiosResponse = await axios.post(`http://localhost:8080/api/post`, post);
+
+      store.commit('addPost', response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
     posts,
     isLoading,
     getPosts,
     deletePost,
     updatePost,
+    createPost,
   };
 }

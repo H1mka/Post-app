@@ -10,7 +10,13 @@
       <CustomButton text="Create Post" @click="showModal = true" />
     </div>
 
-    <PostList :posts="posts" v-if="!isLoading" />
+    <div class="post-list-wrapper" v-if="!isLoading">
+      <div class="post-list-header">
+        <h2>Posts:</h2>
+        <CustomSelect :options="sortOptions" v-model="sortParam" />
+      </div>
+      <PostList :posts="sortedPosts" />
+    </div>
     <h3 v-else>loading...</h3>
   </div>
 </template>
@@ -21,7 +27,10 @@ import PostForm from '../components/PostForm.vue';
 import PostList from '../components/PostList.vue';
 import NotAuthorizedError from '../components/NotAuthorizedError.vue';
 import usePosts from '../hooks/usePosts';
+import useSortedPosts from '../hooks/useSortedPosts';
 import store from '../store/store';
+
+import { ISortOptions } from '../types';
 
 export default defineComponent({
   name: 'PostsPage',
@@ -33,6 +42,11 @@ export default defineComponent({
   data() {
     return {
       showModal: false,
+      sortOptions: [
+        { text: 'By date', value: 'date' },
+        { text: 'By authors', value: 'author' },
+        { text: 'By title', value: 'title' },
+      ] as ISortOptions[],
     };
   },
   methods: {
@@ -45,9 +59,11 @@ export default defineComponent({
   },
   setup() {
     const { posts, isLoading, getPosts } = usePosts();
+    const { sortParam, sortedPosts } = useSortedPosts(posts);
 
     return {
-      posts,
+      sortedPosts,
+      sortParam,
       isLoading,
       getPosts,
       store,
@@ -60,5 +76,19 @@ export default defineComponent({
 .add-post-btn {
   margin-top: 20px;
   text-align: right;
+}
+
+.post-list-wrapper {
+  margin-top: 20px;
+
+  .post-list-header {
+    display: flex;
+    justify-content: space-between;
+
+    select {
+      max-width: 250px;
+      width: 100%;
+    }
+  }
 }
 </style>

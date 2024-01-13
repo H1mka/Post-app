@@ -4,4 +4,5 @@ export interface IPost {
   content: string;
   author: string;
   date: string;
+  user_id: number;
 }

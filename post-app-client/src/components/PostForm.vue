@@ -9,6 +9,7 @@
         <p class="input-label">Post title:</p>
         <p class="error-msg" v-if="v$.post.title.$error">Length must be greater than 4</p>
         <CustomInput
+          type="text"
           v-model.trim="post.title"
           @blur="v$.post.title.$touch"
           :class="v$.post.title.$error ? 'input-error' : ''"
@@ -19,6 +20,7 @@
         <p class="input-label">Author:</p>
         <p class="error-msg" v-if="v$.post.author.$error">Length must be greater than 4</p>
         <CustomInput
+          type="text"
           v-model.trim="post.author"
           @blur="v$.post.author.$touch"
           :class="v$.post.author.$error ? 'input-error' : ''"
@@ -29,6 +31,7 @@
         <p class="input-label">Content:</p>
         <p class="error-msg" v-if="v$.post.content.$error">Length must be greater than 10</p>
         <CustomInput
+          type="text"
           v-model.trim="post.content"
           @blur="v$.post.content.$touch"
           :class="v$.post.content.$error ? 'input-error' : ''"
@@ -43,8 +46,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref, Ref } from 'vue';
 import usePosts from '../hooks/usePosts';
+import store from '../store/store';
 import { IPost } from '../types/postInterface';
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength } from '@vuelidate/validators';
@@ -56,6 +60,7 @@ export default defineComponent({
         title: '',
         author: '',
         content: '',
+        user_id: store.state.isAuth ? store.state.user.id : null,
       } as IPost,
     };
   },
@@ -73,7 +78,7 @@ export default defineComponent({
   validations() {
     return {
       post: {
-        title: { required, minLength: minLength(4) },
+        title: { required, minLength: minLength(4), $lazy: true },
         author: { required, minLength: minLength(4) },
         content: { required, minLength: minLength(10) },
       },

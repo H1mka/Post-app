@@ -23,13 +23,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 header {
   width: 100%;
-  min-height: 20vh;
+  min-height: 150px;
   background-color: var(--light-purple);
 
   .header-wrapper {
     max-width: 1040px;
     width: 100%;
-    min-height: 20vh;
+    min-height: 150px;
     margin: 0 auto;
 
     display: flex;

@@ -1,5 +1,5 @@
 <template>
-  <input type="text" :value="modelValue" @input="handleChange" />
+  <input :value="modelValue" @input="handleChange" />
 </template>
 
 <script lang="ts">
@@ -30,6 +30,7 @@ input {
   padding: 6px 12px;
   outline: none;
   border: 2px solid var(--light-purple);
+  border-radius: 6px;
   box-sizing: border-box;
 }
 

@@ -1,13 +1,23 @@
-import { IPost } from '../types/postInterface';
+import { IPost, IUser } from '../types';
 import { createStore } from 'vuex';
 
 export default createStore({
   state() {
     return {
+      isAuth: false as Boolean,
+      user: {} as IUser,
       posts: [] as IPost[],
     };
   },
   mutations: {
+    setAuth(state, payload: Boolean) {
+      state.isAuth = payload;
+    },
+
+    setUser(state, payload: IUser) {
+      state.user = payload;
+    },
+
     setPosts(state, payload: IPost[]) {
       state.posts = payload;
     },
@@ -28,8 +38,12 @@ export default createStore({
   },
   getters: {
     getPostById: (state) => (postId: number) => {
-      console.log('hi');
       return state.posts.find((post) => post.id === postId);
+    },
+    getAuthorName: (state) => {
+      if (!state.user) return 'unknown user';
+
+      return state.user.first_name + ' ' + state.user.last_name;
     },
   },
   strict: true,

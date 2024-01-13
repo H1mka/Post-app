@@ -1,22 +1,23 @@
 import { ref, Ref, onMounted } from 'vue';
 import { IPost } from '../types/postInterface';
 import axios from 'axios';
+import store from '../store/store';
 
-export default function (id: number) {
-  const post: Ref<IPost> = ref({} as IPost);
+const useGetUserPosts = (id: number) => {
+  const posts: Ref<IPost[]> = ref([]);
   const isLoading: Ref<boolean> = ref(false);
 
-  const getPost = async (postId: number) => {
+  const getPosts = async (user_id: number) => {
     try {
       isLoading.value = true;
 
-      const response = await axios.get(`http://localhost:8080/api/post/${postId}`, {
+      const response = await axios.get(`http://localhost:8080/api/post/userPosts/${user_id}`, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
         },
       });
 
-      post.value = response.data;
+      posts.value = response.data;
     } catch (error) {
       console.log(error);
     } finally {
@@ -25,11 +26,13 @@ export default function (id: number) {
   };
 
   onMounted(() => {
-    getPost(id);
+    if (store.state.isAuth) getPosts(id);
   });
 
   return {
-    post,
+    posts,
     isLoading,
   };
-}
+};
+
+export default useGetUserPosts;

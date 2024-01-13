@@ -7,7 +7,7 @@
     <p class="author">{{ post.author }}</p>
     <p class="content">{{ post.content }}</p>
 
-    <div class="post-item__btns">
+    <div class="post-item__btns" v-if="isCanEditPost">
       <CustomButton text="Edit" @click="$router.push(`post/${post.id}`)" />
       <CustomButton text="Delete" @click="deletePost(post.id)" />
     </div>
@@ -16,6 +16,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+import store from '../store/store';
 import { IPost } from '../types/postInterface';
 import usePosts from '../hooks/usePosts';
 import prepareDate from '../utils/prepareDate';
@@ -32,13 +33,17 @@ export default defineComponent({
       return prepareDate(this.post.date);
     },
   },
+  computed: {
+    isAuth() {
+      return store.state.isAuth;
+    },
+    isCanEditPost() {
+      if (this.isAuth && this.post.user_id === store.state.user.id) return true;
+      else return false;
+    },
+  },
   setup(props) {
     const { deletePost } = usePosts();
-
-    // const removePost = () => {
-    //   store.commit('removePost', props.post.id);
-    //   deletePost(props.post.id);
-    // };
 
     return { deletePost };
   },

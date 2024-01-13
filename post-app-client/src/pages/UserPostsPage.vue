@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="store.state.isAuth">
     <!-- eslint-disable vue/no-v-model-argument -->
     <CustomDialog v-model:show="showModal">
       <PostForm :close-modal="closeModal" v-if="store.state.isAuth" />
@@ -13,15 +13,19 @@
     <PostList :posts="posts" v-if="!isLoading" />
     <h3 v-else>loading...</h3>
   </div>
+  <div v-else style="margin-top: 50px">
+    <NotAuthorizedError />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import store from '../store/store';
+
 import PostForm from '../components/PostForm.vue';
 import PostList from '../components/PostList.vue';
 import NotAuthorizedError from '../components/NotAuthorizedError.vue';
-import usePosts from '../hooks/usePosts';
-import store from '../store/store';
+import useGetUserPosts from '../hooks/useGetUserPosts';
 
 export default defineComponent({
   name: 'PostsPage',
@@ -40,25 +44,18 @@ export default defineComponent({
       this.showModal = false;
     },
   },
-  mounted() {
-    this.getPosts();
-  },
-  setup() {
-    const { posts, isLoading, getPosts } = usePosts();
+  setup(props, context) {
+    const user_id = store.state.user.id;
+
+    const { isLoading, posts } = useGetUserPosts(user_id);
 
     return {
-      posts,
       isLoading,
-      getPosts,
+      posts,
       store,
     };
   },
 });
 </script>
 
-<style lang="scss">
-.add-post-btn {
-  margin-top: 20px;
-  text-align: right;
-}
-</style>
+<style lang="scss"></style>

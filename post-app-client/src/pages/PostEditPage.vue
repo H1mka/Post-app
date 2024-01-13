@@ -33,7 +33,7 @@ export default defineComponent({
   mounted() {},
   methods: {
     cancelChanges() {
-      this.$router.push('/');
+      this.$router.go(-1);
     },
   },
   setup(props, context) {
@@ -46,19 +46,17 @@ export default defineComponent({
 
     const removePost = () => {
       deletePost(post.value.id);
-      router.push('/');
+      router.go(-1);
     };
 
     const savePost = () => {
       updatePost(post.value);
-      router.push('/');
+      router.go(-1);
     };
 
     return {
       post,
       isLoading,
-      deletePost,
-      updatePost,
       savePost,
       removePost,
     };

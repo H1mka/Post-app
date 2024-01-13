@@ -1,7 +1,5 @@
 <template>
   <div class="post-list" v-if="posts.length > 0">
-    <h2>Posts:</h2>
-
     <transition-group name="post-list">
       <PostListItem v-for="post in posts" :key="post.id" :post="post" />
     </transition-group>
@@ -49,9 +47,9 @@ export default defineComponent({
 .post-list-enter-from,
 .post-list-leave-to {
   opacity: 0;
-  transform: translateX(200px);
+  transform: translateX(150px);
 }
-.flip-list-move {
-  transition: transform 0.8s ease;
+.post-list-move {
+  transition: transform 0.4s ease;
 }
 </style>

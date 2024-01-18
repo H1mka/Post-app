@@ -1,5 +1,5 @@
 <template>
-  <div v-if="store.state.isAuth">
+  <div>
     <!-- eslint-disable vue/no-v-model-argument -->
     <CustomDialog v-model:show="showModal">
       <PostForm :close-modal="closeModal" v-if="store.state.isAuth" />
@@ -13,19 +13,14 @@
     <PostList :posts="posts" v-if="!isLoading" />
     <h3 v-else>loading...</h3>
   </div>
-  <div v-else style="margin-top: 50px">
-    <NotAuthorizedError />
-  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import store from '../store/store';
 
-import PostForm from '../components/PostForm.vue';
-import PostList from '../components/PostList.vue';
-import NotAuthorizedError from '../components/NotAuthorizedError.vue';
-import useGetUserPosts from '../hooks/useGetUserPosts';
+import { PostForm, PostList, NotAuthorizedError } from '../components';
+import { useGetUserPosts } from '../hooks';
 
 export default defineComponent({
   name: 'PostsPage',

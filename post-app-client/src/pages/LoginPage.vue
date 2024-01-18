@@ -34,15 +34,26 @@ import useLogin from '../hooks/useLogin';
 
 export default defineComponent({
   methods: {
+    clearForm() {
+      this.login = '';
+      this.password = '';
+    },
+
     async submitForm() {
       const isFormCorrect = await this.v$.$validate();
       if (!isFormCorrect) {
-        this.login = '';
-        this.password = '';
+        this.clearForm();
         return;
       }
 
-      this.loginUser();
+      await this.loginUser();
+      this.clearForm();
+
+      if (!this.isLoginSuccessful) {
+        this.v$.$touch();
+        return;
+      }
+
       this.$router.push('/');
     },
   },

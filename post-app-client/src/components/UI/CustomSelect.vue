@@ -37,5 +37,7 @@ select {
   padding: 10px 0px;
   outline: none;
   border: 2px solid var(--dark-purple);
+  max-width: 250px;
+  width: 100%;
 }
 </style>

@@ -8,19 +8,22 @@ const useLogin = () => {
   const isLoginSuccessful: Ref<Boolean> = ref(false);
 
   const loginUser = async () => {
-    const response = await axios.post('http://localhost:8080/api/login', {
-      login: login.value,
-      password: password.value,
-    });
+    try {
+      const response = await axios.post('http://localhost:8080/api/login', {
+        login: login.value,
+        password: password.value,
+      });
 
-    console.log(response.data);
+      if (response.data.message !== 'success') {
+        isLoginSuccessful.value = false;
+        return;
+      }
 
-    if (response.data.message !== 'success') return;
-
-    isLoginSuccessful.value = response.data.isLogin; // ?
-    store.commit('setAuth', true);
-    store.commit('setUser', response.data.user);
-    localStorage.setItem('token', response.data.token);
+      isLoginSuccessful.value = true;
+      store.commit('setAuth', true);
+      store.commit('setUser', response.data.user);
+      localStorage.setItem('token', response.data.token);
+    } catch (error) {}
   };
 
   return {

@@ -5,7 +5,7 @@
         <router-link to="/" class="nav-btn">Posts</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/usersPosts" class="nav-btn">My posts</router-link>
+        <router-link to="/users-posts" class="nav-btn">My posts</router-link>
       </li>
     </ul>
 

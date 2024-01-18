@@ -2,12 +2,11 @@
   <div>
     <!-- eslint-disable vue/no-v-model-argument -->
     <CustomDialog v-model:show="showModal">
-      <PostForm :close-modal="closeModal" v-if="store.state.isAuth" />
-      <NotAuthorizedError v-else />
+      <PostForm :close-modal="closeModal" />
     </CustomDialog>
 
     <div class="add-post-btn">
-      <CustomButton text="Create Post" @click="showModal = true" />
+      <CustomButton text="Create Post" @click="createPostDialogOpen" />
     </div>
 
     <div class="post-list-wrapper" v-if="!isLoading">
@@ -23,11 +22,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PostForm from '../components/PostForm.vue';
-import PostList from '../components/PostList.vue';
-import NotAuthorizedError from '../components/NotAuthorizedError.vue';
-import usePosts from '../hooks/usePosts';
-import useSortedPosts from '../hooks/useSortedPosts';
+import { PostForm, PostList, NotAuthorizedError } from '../components';
+import { usePosts, useSortedPosts } from '../hooks';
 import store from '../store/store';
 
 import { ISortOptions } from '../types';
@@ -39,6 +35,7 @@ export default defineComponent({
     PostList,
     NotAuthorizedError,
   },
+
   data() {
     return {
       showModal: false,
@@ -49,14 +46,22 @@ export default defineComponent({
       ] as ISortOptions[],
     };
   },
+
   methods: {
     closeModal() {
       this.showModal = false;
     },
+    createPostDialogOpen() {
+      if (!store.state.isAuth) this.$router.push('not-auth');
+
+      this.showModal = true;
+    },
   },
+
   mounted() {
     this.getPosts();
   },
+
   setup() {
     const { posts, isLoading, getPosts } = usePosts();
     const { sortParam, sortedPosts } = useSortedPosts(posts);
@@ -84,11 +89,6 @@ export default defineComponent({
   .post-list-header {
     display: flex;
     justify-content: space-between;
-
-    select {
-      max-width: 250px;
-      width: 100%;
-    }
   }
 }
 </style>

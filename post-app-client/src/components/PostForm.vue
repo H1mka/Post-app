@@ -19,6 +19,12 @@
       <div class="form__block">
         <p class="input-label">Author:</p>
         <p class="error-msg" v-if="v$.post.author.$error">Length must be greater than 4</p>
+        <!-- <CustomInput
+          type="text"
+          v-model.trim="post.author"
+          @blur="v$.post.author.$touch"
+          :class="v$.post.author.$error ? 'input-error' : ''"
+        /> -->
         <CustomInput
           type="text"
           v-model.trim="post.author"
@@ -46,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref } from 'vue';
+import { defineComponent } from 'vue';
 import usePosts from '../hooks/usePosts';
 import store from '../store/store';
 import { IPost } from '../types/postInterface';
@@ -58,7 +64,7 @@ export default defineComponent({
     return {
       post: {
         title: '',
-        author: '',
+        author: store.getters.getAuthorName,
         content: '',
         user_id: store.state.isAuth ? store.state.user.id : null,
       } as IPost,

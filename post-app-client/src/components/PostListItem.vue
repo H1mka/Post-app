@@ -2,7 +2,7 @@
   <section class="post-item">
     <div class="post-item__header">
       <h4 class="title">{{ post.title }}</h4>
-      <p class="date">{{ prepareDateInSetup() }}</p>
+      <p class="date">{{ prepareDate(post.date) }}</p>
     </div>
     <p class="author">{{ post.author }}</p>
     <p class="content">{{ post.content }}</p>
@@ -18,7 +18,7 @@
 import { defineComponent, PropType } from 'vue';
 import store from '../store/store';
 import { IPost } from '../types/postInterface';
-import usePosts from '../hooks/usePosts';
+import { usePosts } from '../hooks';
 import prepareDate from '../utils/prepareDate';
 
 export default defineComponent({
@@ -28,11 +28,7 @@ export default defineComponent({
       required: true,
     },
   },
-  methods: {
-    prepareDateInSetup() {
-      return prepareDate(this.post.date);
-    },
-  },
+
   computed: {
     isAuth() {
       return store.state.isAuth;
@@ -42,10 +38,11 @@ export default defineComponent({
       else return false;
     },
   },
+
   setup(props) {
     const { deletePost } = usePosts();
 
-    return { deletePost };
+    return { deletePost, prepareDate };
   },
 });
 </script>

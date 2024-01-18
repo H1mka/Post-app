@@ -26,8 +26,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import useGetPostById from '../hooks/useGetPostById';
-import usePosts from '../hooks/usePosts';
+import { useGetPostById, usePosts } from '../hooks';
 
 export default defineComponent({
   mounted() {},

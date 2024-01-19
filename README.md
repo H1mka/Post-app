@@ -37,3 +37,7 @@
 
 ## Страница с постами пользователя
 ![image](https://github.com/H1mka/Post-app/assets/60039557/69491ab0-0794-4243-a082-91d2aa156050)
+
+## Модальное окно, добавление поста
+![image](https://github.com/H1mka/Post-app/assets/60039557/b7461950-9a0f-49cc-a83f-34b57e422483)
+

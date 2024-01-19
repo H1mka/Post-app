@@ -21,3 +21,11 @@
 
 
 ### Пользователь авторизован и может менять только СВОИ посты
+![image](https://github.com/H1mka/Post-app/assets/60039557/9c734554-88c7-4802-83c1-7b7c57b68a7b)
+
+#### Страница изменения
+![image](https://github.com/H1mka/Post-app/assets/60039557/f22f66e4-215c-4fb2-95bf-cd31695e87c8)
+
+
+#### Страница с постами пользователя
+![image](https://github.com/H1mka/Post-app/assets/60039557/69491ab0-0794-4243-a082-91d2aa156050)

@@ -6,10 +6,12 @@
 
 
 ## Авторизация
-![image](https://github.com/H1mka/Post-app/assets/60039557/f97f686a-61ec-4bc9-a14e-2d3083dc704c)
+![image](https://github.com/H1mka/Post-app/assets/60039557/1795f1e1-750f-400a-96c1-10f586a24014)
 
 ## Регистрация
-![image](https://github.com/H1mka/Post-app/assets/60039557/c1d6cea8-4298-4c62-801c-85840d62f1a7)
+![image](https://github.com/H1mka/Post-app/assets/60039557/b04da203-9f24-451d-86ee-65d0cca6438c)
+
 
 ### Валидация форм с помощью библиотеки Vuelidate
-![image](https://github.com/H1mka/Post-app/assets/60039557/30573bc4-07e7-4651-95f4-7e8f5e6e4044)
+![image](https://github.com/H1mka/Post-app/assets/60039557/849eec9f-4090-4675-8a47-0b466cc99eea)
+

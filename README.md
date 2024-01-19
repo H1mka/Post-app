@@ -1,5 +1,5 @@
-##Главная страница с постами
-![image](https://github.com/H1mka/Post-app/assets/60039557/191bf24f-8c30-4e26-a164-b7529d633d9b)
+# Главная страница с постами
+![image](https://github.com/H1mka/Post-app/assets/60039557/1c769a77-4dbd-4275-9ade-fdd361dbdac6)
 
 ## Не авторизованый пользователь не имеет доступа к странице My posts
 ![image](https://github.com/H1mka/Post-app/assets/60039557/f108aebe-93f8-4bff-80b9-68f283664282)

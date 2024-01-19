@@ -15,7 +15,7 @@
 #
 
 ## Авторизация
-![Uploading image.png…]()
+![image](https://github.com/H1mka/Post-app/assets/60039557/9069cf3b-000a-4264-8034-3777bc1ff2af)
 #
 
 ## Регистрация

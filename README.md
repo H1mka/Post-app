@@ -10,7 +10,7 @@
 #
 
 ## Не авторизованый пользователь не имеет доступа к странице My posts
-![image](https://github.com/H1mka/Post-app/assets/60039557/f108aebe-93f8-4bff-80b9-68f283664282)
+![image](https://github.com/H1mka/Post-app/assets/60039557/1a54fcdd-80ff-404d-b410-4c9f85112523)
 #
 
 ## Авторизация

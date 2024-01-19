@@ -5,11 +5,15 @@
 ![image](https://github.com/H1mka/Post-app/assets/60039557/f108aebe-93f8-4bff-80b9-68f283664282)
 
 
+
 ## Авторизация
 ![image](https://github.com/H1mka/Post-app/assets/60039557/1795f1e1-750f-400a-96c1-10f586a24014)
 
+
+
 ## Регистрация
 ![image](https://github.com/H1mka/Post-app/assets/60039557/b04da203-9f24-451d-86ee-65d0cca6438c)
+
 
 
 ### Валидация форм с помощью библиотеки Vuelidate

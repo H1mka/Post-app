@@ -56,7 +56,7 @@ export default defineComponent({
 
       this.$router.push('/');
     },
-  },
+  }, // dwqdwqqqwdqw
   setup() {
     const { login, password, isLoginSuccessful, loginUser } = useLogin();
 

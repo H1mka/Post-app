@@ -14,10 +14,14 @@ import { defineComponent } from 'vue';
 import Navbar from './Navbar.vue';
 
 export default defineComponent({
+  // My test
   components: {
     Navbar,
   },
 });
+// My test
+// My test
+// My test
 </script>
 
 <style lang="scss" scoped>

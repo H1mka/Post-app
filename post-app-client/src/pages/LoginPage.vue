@@ -52,11 +52,15 @@ export default defineComponent({
       if (!this.isLoginSuccessful) {
         this.v$.$touch();
         return;
-      } // 321321
+      }
+      // My test
+      // My test
+      // My test
+      // My test
 
       this.$router.push('/');
     },
-  }, // dwqdwqqqwdqw312312123
+  },
   setup() {
     const { login, password, isLoginSuccessful, loginUser } = useLogin();
 

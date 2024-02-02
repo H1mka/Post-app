@@ -53,13 +53,10 @@ export default defineComponent({
         this.v$.$touch();
         return;
       }
-<<<<<<< HEAD
       // My test
       // My test
       // My test
       // My test
-=======
->>>>>>> 789e87bd513c595b0e69bff823b1366c6b8b0cb8
 
       this.$router.push('/');
     },
